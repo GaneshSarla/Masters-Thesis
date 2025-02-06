@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis Results</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+   
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Unlocking Software Potential through App Store Reviews</h1>
+        </div>
+        <nav>
+            <ul class="menu">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li style="background-color: #ffe53b;background-image: linear-gradient(147deg, #ffe53b 0%, #ff2525 74%); color:white; border-radius:5px;padding:0.5rem 1rem;"><a href="#">Upload</a></li>
+                <li><a href="{% url 'nlp_model_analysis' %}">TextBlob</a></li>
+                <li><a href="{% url 'bert_model_analysis' %}">BERT</a></li>
+                
+                <li><a href="{% url 'llm_model_analysis' %}">LLM</a></li>
+                <li><a href="{% url 'show_sentiment_distribution' %}">Categorization</a></li>
+                <li><a href="{% url 'sentiment_comparison'%}">Show comparison</a></li>
+                <li><a href="{% url 'prediction' %}">Prediction</a></li>
+                <li><a href="{% url 'logout_user' %}">Logout</a></li>
+            </ul>
+        </nav>
+
+
+        
+        <div class="container mt-5">
+            <h1 class="text-center">Sentiment Analysis Results</h1>
+            
+            {% if error_message %}
+                <div class="alert alert-danger">{{ error_message }}</div>
+            {% endif %}
+            
+            {% if error %}
+                <div class="alert alert-danger">{{ error }}</div>
+            {% endif %}
+        
+            <h3>File Information</h3>
+            <p><strong>File Name:</strong> {{ file_name }}</p>
+            <p><strong>Rows:</strong> {{ num_rows }}</p>
+            <p><strong>Columns:</strong> {{ num_cols }}</p>
+        
+            {% if top_5_data %}
+                <!-- <h3>Top Sentiment Analysis Results</h3> -->
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Text</th>
+                            <th>Cleaned Review</th>
+                            <th>Sentiment Prediction</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in top_5_data %}
+                            <tr>
+                                <td>{{ row.text }}</td>
+                                <td>{{ row.cleaned_review }}</td>
+                                <td>{{ row.sentiment_prediction }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+        </div>
+        
+        <!-- Bootstrap JS and dependencies -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+        
+        
+</body>
+</html>

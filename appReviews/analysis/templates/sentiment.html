@@ -1,0 +1,99 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Unlocking Software Potential through App Store Reviews</h1>
+        </div>
+        
+        <nav>
+            <ul class="menu">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'upload_file' %}">Upload</a></li>
+                <li><a href="{% url 'nlp_model_analysis' %}">TextBlob</a></li>
+                <li><a href="{% url 'bert_model_analysis' %}">BERT</a></li>
+                
+                <li><a href="{% url 'llm_model_analysis' %}">LLM</a></li>
+                <li style="background-color: #ffe53b;background-image: linear-gradient(147deg, #ffe53b 0%, #ff2525 74%); color:white; border-radius:5px;padding:0.5rem 1rem;"><a href="#">Categorization</a></li>
+                <li><a href="{% url 'sentiment_comparison'%}">Show comparison</a></li>
+                <li><a href="{% url 'prediction' %}">Prediction</a></li>
+                <li><a href="{% url 'logout_user' %}">Logout</a></li>
+            </ul>
+        </nav>
+
+        <div class="middle-box">
+            <div class="analysis-box">
+                <div class="analysis-left">
+                    {% if sentiment_graph_bert %}
+                        <img src="data:image/png;base64,{{ sentiment_graph_bert }}" alt="BERT Sentiment Distribution" />
+                    {% endif %}
+                    
+                    <!-- {% if sentiment_counts.bert %}
+                        <h4>BERT Sentiment Counts:</h4>
+                        <ul>
+                            {% for sentiment, count in sentiment_counts.bert.items %}
+                                <li>{{ sentiment }}: {{ count }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %} -->
+
+                    <br><br>
+                    <img src="data:image/png;base64,{{ topic_graph }}" alt="Topic Distribution Graph" />
+                    {% if error_message %}
+                        <p style="color:red;">{{ error_message }}</p>
+                    {% endif %}
+                </div>
+
+                <div class="analysis-right">
+                    {% if sentiment_graph_nlp %}
+                        <img src="data:image/png;base64,{{ sentiment_graph_nlp }}" alt="Textblob Sentiment Analysis" />
+                    {% endif %}
+                    
+                    <!-- {% if sentiment_counts.nlp %}
+                        <h4>NLP Sentiment Counts:</h4>
+                        <ul>
+                            {% for sentiment, count in sentiment_counts.nlp.items %}
+                                <li>{{ sentiment }}: {{ count }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %} -->
+                    
+                    {% if error_message %}
+                        <p style="color:red;background:white;">{{ error_message }}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'js/scripts.js' %}"></script>
+    <script>
+        // Check if sentiment graphs for BERT and NLP are available
+        // var sentimentGraphBertAvailable = {% if sentiment_graph_bert %}true{% else %}false{% endif %};
+        // var sentimentGraphNlpAvailable = {% if sentiment_graph_nlp %}true{% else %}false{% endif %};
+
+        // Generate alert message if both sentiment graphs are unavailable
+        // if (!sentimentGraphBertAvailable && !sentimentGraphNlpAvailable) {
+        //     alert("No sentiment graphs available for BERT and NLP. Please check your data.");
+        //     window.location.href = "{% url 'upload_file' %}";
+        //}
+        //  if (!sentimentGraphBertAvailable) {
+            // alert("No sentiment graph available for BERT. Please check your BERT model data.");
+        // }
+        //  if (!sentimentGraphNlpAvailable) {
+        //     alert("No sentiment graph available for NLP. Please check your NLP model data.");
+        // }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Unlocking Software Potential through App Store Reviews</h1>
+        </div>
+        <div class="middle">
+            <nav>
+                <ul class="menu">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                </ul>
+            </nav>
+            <div class="wrapper">
+                <div class="login-box">
+                    <h1>Register</h1>
+                    <center>
+                        <p style="color:red">{{ error }}</p>
+                    </center>
+                    <form method="post" action="{% url 'register' %}">
+                        {% csrf_token %}
+                        <div class="input-group">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" name="username" required />
+                        </div>
+                        <div class="input-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" required />
+                        </div>
+                        <div class="input-group">
+                            <label for="password1">Confirm Password</label>
+                            <input type="password" id="password1" name="password1" required />
+                        </div>
+                        <button type="submit">Register</button>
+                    </form>
+                    <p class="signup-link">
+                        <a href="{% url 'login' %}">Already have an account? Log in</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>

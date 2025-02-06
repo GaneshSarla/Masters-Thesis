@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Unlocking Software Potential through App Store Reviews</h1>
+        </div>
+        <nav>
+            <ul class="menu">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li style="background-color: #ffe53b;background-image: linear-gradient(147deg, #ffe53b 0%, #ff2525 74%); color:white; border-radius:5px;padding:0.5rem 1rem;"><a href="#">Upload</a></li>
+                <li><a href="{% url 'nlp_model_analysis' %}">TextBlob</a></li>
+                <li><a href="{% url 'bert_model_analysis' %}">BERT</a></li>
+                
+                <li><a href="{% url 'llm_model_analysis' %}">LLM</a></li>
+                <li><a href="{% url 'show_sentiment_distribution' %}">Categorization</a></li>
+                <li><a href="{% url 'sentiment_comparison'%}">Show comparison</a></li>
+                <li><a href="{% url 'prediction' %}">Prediction</a></li>
+                <li><a href="{% url 'logout_user' %}">Logout</a></li>
+            </ul>
+        </nav>
+        <div class="middle-box">
+            <div class="box box1">
+                <div class="upload-container">
+                    <form action="{% url 'upload_file' %}" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
+                        {% csrf_token %}
+                        <input type="file" name="file-upload" id="file-upload" class="file-upload-input" accept=".csv"
+                            required />
+                        <label for="file-upload" class="file-upload-label">
+                            <span class="upload-icon">📤</span>
+                            <span class="upload-text">Click or Drag to Upload</span>
+                        </label>
+
+                        <!-- File Name Display -->
+                        <div id="file-name" class="file-name"></div>
+
+                        <!-- Submit Button (newly added) -->
+                        <button id="submit-btn" class="submit-btn">Submit File</button>
+
+                    </form>
+                </div>
+                <div class="file-details">
+                    <div class="file-info-box">
+                        <p><strong>File Name:</strong> {{ file_name }}</p>
+                    </div>
+                    <div class="file-info-box">
+                        <p><strong>Number of Rows:</strong> {{ num_rows }}</p>
+                    </div>
+                    <div class="file-info-box">
+                        <p><strong>Number of Columns:</strong> {{ num_cols }}</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="box box2">
+                {% if error %}
+                <p style="color: red;">{{ error }}</p>
+                {% endif %}
+
+                {% if top_5_data %}
+                <h3>Top 30 Reviews from CSV</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            {% for header in top_5_data.0 %}
+                            <th>{{ header }}</th>
+                            {% endfor %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in top_5_data %}
+                        <tr>
+                            {% for cell in row.values %}
+                            <td>{{ cell }}</td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    </div>
+<script src="{% static 'js/scripts.js' %}"></script>
+</body>
+
+</html>

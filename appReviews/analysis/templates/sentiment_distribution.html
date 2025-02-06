@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Distribution</title>
+</head>
+<body>
+    <h1>Sentiment Distribution</h1>
+
+    {% if error_message %}
+        <p style="color: red;">{{ error_message }}</p>
+    {% endif %}
+
+    {% if sentiment_counts %}
+        <h2>Sentiment Counts</h2>
+        <ul>
+            {% for sentiment, count in sentiment_counts.items %}
+                <li>{{ sentiment }}: {{ count }}</li>
+            {% endfor %}
+        </ul>
+
+        <h2>Sentiment Distribution Graph</h2>
+        <img src="data:image/png;base64,{{ sentiment_graph }}" alt="Sentiment Distribution Graph"/>
+    {% endif %}
+    <script>
+        // Check if 'top_5_data' is empty or not defined
+        {% if not top_5_data %}
+            alert("No data available, Upload data first!");
+        {% endif %}
+    </script>
+</body>
+</html>

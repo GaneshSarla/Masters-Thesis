@@ -1,0 +1,388 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #FF512F;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #DD2476, #FF512F);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #DD2476, #FF512F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    box-sizing: border-box;
+
+}
+
+.container {
+    min-height: 100%;
+    box-sizing: border-box;
+
+}
+
+.header {
+    height: 70px;
+    width: 100vw;
+    color:white;
+ 
+    background-color: #74EBD5;
+    background-image: linear-gradient(90deg, #74EBD5 0%, #9FACE6 100%);
+
+    text-align: center;
+    padding-top: 10px;
+}
+
+.middle {
+    width: 100vw;
+    max-height: 100vh;
+}
+
+nav {
+    background-color: #4158d0;
+    background-image: linear-gradient(43deg,
+            #4158d0 0%,
+            #c850c0 46%,
+            #ffcc70 100%);
+
+    color: #fff;
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+.menu li a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.menu li a:hover {
+    background-color: #ffe53b;
+    background-image: linear-gradient(147deg, #ffe53b 0%, #ff2525 74%);
+
+    border-radius: 5px;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+
+.login-box {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 400px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.signup-link {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.signup-link a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+.middle-box {
+    display: flex;
+    flex: 1;
+    padding: 10px;
+    overflow: hidden;
+    /* Prevents scroll on the container */
+
+}
+.middle-top-box{
+    margin-top:10%;
+    margin-left:50px;
+}
+.input-box{
+    width:300px;
+    height:100px;
+    border-radius:10px;
+    padding:10px;
+}
+.btn-container{
+    display:flex;
+    width:300px;
+    gap: 50px;
+    padding:10px 0px;
+}
+.btn{
+    background:green;
+}
+.btn:hover{
+    background-color: #45a049;
+}
+.result-container{
+ margin: auto;
+ color:white;
+
+}
+.input-text{
+    border:2px solid black;
+    padding:20px;
+}
+.prediction,.input-text{
+    margin-top: 20px;
+    font-weight: bolder;
+    font-size:25px;
+}
+.box1 {
+    width: 40%;
+    border-right: 1px solid rgb(55, 215, 247);
+    padding-right:5px;
+
+}
+
+.box2 {
+    width: 60%;
+    max-height: 100%;
+
+}
+
+.upload-container {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    margin-top: 2%;
+    margin-left: 10%;
+}
+
+.file-upload-input {
+    display: none;
+}
+
+.file-upload-label {
+    background-color: #4CAF50;
+    color: #fff;
+    border-radius: 8px;
+    padding: 20px 30px;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.file-upload-label:hover {
+    background-color: #45a049;
+}
+
+.upload-icon {
+    font-size: 24px;
+}
+
+.upload-text {
+    display: block;
+    margin-top: 10px;
+}
+
+.file-name {
+    margin-top: 10px;
+    color: #666;
+    font-size: 14px;
+    font-style: italic;
+}
+
+/* New Submit Button */
+.submit-btn {
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    margin-top: 20px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #1976D2;
+}
+
+.submit-btn:disabled {
+    background-color: #B0BEC5;
+    cursor: not-allowed;
+}
+
+/* Drag over effect */
+.upload-container.dragover {
+    background-color: #e7f4e8;
+    border: 2px dashed #4CAF50;
+}
+
+.box2 {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+h3 {
+    background: white;
+    text-align: center;
+}
+
+/* Table container with scroll */
+/* Table container that is scrollable */
+.table-container {
+    max-height: 400px;
+    /* Maximum height of the scrollable area */
+    overflow-y: auto;
+    /* Enable vertical scrolling when content exceeds max-height */
+    border: 1px solid #ddd;
+    /* Border around the scrollable container */
+    margin-top: 20px;
+  
+    /* Space between the title and the table */
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    /* Full width of the container */
+    border-collapse: collapse;
+
+    /* Remove space between borders */
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    /* Border around each cell */
+    padding: 8px;
+    /* Padding inside each cell */
+    text-align: left;
+    /* Align text to the left */
+}
+
+th {
+    background-color: #f4f4f4;
+    /* Light background color for headers */
+}
+
+td {
+    background-color: #fff;
+    /* White background for data cells */
+}
+
+/* Styling for file details section */
+.file-details {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+    /* Space between boxes */
+    justify-content: space-between;
+}
+
+/* Each individual box styling */
+.file-info-box {
+    padding: 15px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    width: 30%;
+    /* Adjust the width to your preference */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Optional: Add hover effect for the boxes */
+.file-info-box:hover {
+    background-color: #f1f1f1;
+}
+
+/* Styling for the file name, rows, and columns */
+.file-info-box p {
+    font-size: 16px;
+    margin: 0;
+    padding: 5px 0;
+    word-wrap: break-word;
+}
+
+.file-info-box strong {
+    font-weight: bold;
+}
+.analysis-box {
+    display: flex;
+    margin:0 auto;
+    gap:50px;
+}
+.analysis-left, .analysis-right{
+    width:50%;
+}
+@media screen and (min-width: 1400px) {
+    .upload-container {
+        margin-top: 15%;
+    }
+
+    .box2{
+        margin-top:5px;
+        min-height: 550px;
+        overflow-y: auto;
+    }
+
+    .table-container{
+        overflow-y:auto;
+    }
+  
+
+}
